@@ -2,6 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.random import randn
 import seaborn as sns  # Necesario para estilos
+import os
+import sys
+
 
 # Configuración inicial
 np.random.seed(42)  
@@ -85,6 +88,10 @@ plt.scatter(x2, y2, label=r"$y = \sin(x) + \mathcal{N}(0,0.2)$")
 plt.plot(x2, np.sin(x2), color='red', linewidth=2, label=r"$y = \sin(x)$")
 plt.title("Función Seno con Ruido Gaussiano")
 plt.legend()
+print("x2:", x2)
+print("y2:", y2)
+plt.savefig("graficas_generadas2.jpg", dpi=300)  # Alta resolución
+
 
 # 13. Gráfico de contorno con meshgrid
 plt.figure(figsize=(10, 6))
@@ -94,6 +101,13 @@ X, Y = np.meshgrid(x3, y3)
 Z = np.cos(X) + np.sin(Y)
 plt.contour(X, Y, Z, levels=20, cmap='viridis')
 plt.title(r"Gráfico de Contorno: $z = \cos(x) + \sin(y)$")
+print("x3:", x3)
+print("y3:", y3)
+print("X:", X)
+print("Y:", Y)
+print("Z:", Z)
+plt.savefig("graficas_generadas3.jpg", dpi=300)  # Alta resolución
+
 
 # 14. Scatter con densidad de color
 plt.figure(figsize=(10, 6))
@@ -101,12 +115,18 @@ x4, y4 = np.random.randn(1000), np.random.randn(1000)
 plt.scatter(x4, y4, c=np.hypot(x4, y4), cmap='plasma', alpha=0.6, edgecolor='w', linewidth=0.3)
 plt.colorbar(label="Distancia al origen")
 plt.title("Dispersión con Densidad")
+print("x4:", x4)
+print("y4:", y4)        
+
 
 # 15. Gráfico de contorno lleno
 plt.figure(figsize=(10, 6))
 plt.contourf(X, Y, Z, levels=20, cmap='viridis')
 plt.colorbar(label="Valor de Z")
 plt.title(r"Contorno Lleno: $z = \cos(x) + \sin(y)$")
+print("X:", X)
+print("Y:", Y)  
+
 
 # ----------------------------
 # 3. Histogramas
@@ -118,6 +138,8 @@ plt.hist(data_norm, bins=30, density=True, alpha=0.7, edgecolor='black', color='
 plt.axvline(data_norm.mean(), color='red', linestyle='--', label=f"Media: {data_norm.mean():.2f}")
 plt.title("Histograma Distribución Normal")
 plt.legend()
+print("data_norm:", data_norm)
+
 
 # 17. Dos distribuciones superpuestas (con densidad)
 plt.figure(figsize=(10, 6))
@@ -127,6 +149,9 @@ plt.hist(data1, bins=30, alpha=0.5, label=r"$\mu=0, \sigma=1$", density=True)
 plt.hist(data2, bins=30, alpha=0.5, label=r"$\mu=3, \sigma=1.5$", density=True)
 plt.title("Histogramas Superpuestos (Normalizados)")
 plt.legend()
+print("data1:", data1)
+print("data2:", data2)  
+
 
 # 18. Experimentar con bins
 plt.figure(figsize=(15, 5))
@@ -136,9 +161,29 @@ for i, bins in enumerate(bins_list, 1):
     plt.hist(data_norm, bins=bins, density=True, alpha=0.7, color='green')
     plt.title(f"{bins} bins")
 plt.suptitle("Efecto de Número de Bins")
+print("data_norm:", data_norm)  
+
 
 # ----------------------------
 # Mostrar todos los gráficos
+
 # ----------------------------
 plt.tight_layout()
 plt.show()
+
+# 1. Crear carpeta para gráficas
+carpeta = "graficas_generadas"
+os.makedirs(carpeta, exist_ok=True)
+
+# 2. Generar y guardar gráficos
+x = np.linspace(0, 2*np.pi, 100)
+
+plt.figure(figsize=(10, 6))
+x1, y1 = np.random.rand(100), np.random.rand(100)
+plt.scatter(x1, y1, alpha=0.7, edgecolor='k')
+plt.title("Graficas_generadas")
+plt.xlabel("X"), plt.ylabel("Y")
+print("x1:", x1)
+print("y1:", y1)
+
+plt.savefig("graficas_generadas.jpg", dpi=300)  # Alta resolución
