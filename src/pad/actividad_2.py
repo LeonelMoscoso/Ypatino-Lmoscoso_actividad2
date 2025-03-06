@@ -19,6 +19,19 @@ plt.style.use('seaborn-v0_8')  # 🚨 Nombre actualizado
 array_10_29 = np.arange(10, 30)
 print("Array 10-29:\n", array_10_29)
 
+directorio = os.path.join("src", "pad", "static", "json")  # 🛑 Usa os.path.join
+os.makedirs(directorio, exist_ok=True)
+
+# Ruta completa del archivo
+ruta_archivo = os.path.join(directorio, "array_10_29.json")  # ✅ Ruta válida
+
+# Guardar el JSON
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump({"array": array_10_29.tolist()}, archivo, indent=4)
+
+print(f"Archivo guardado en: {ruta_archivo}")
+
+
 # 2. Suma de array 10x10 de unos
 array_10x10 = np.ones((10, 10))
 suma_10x10 = array_10x10.sum()
