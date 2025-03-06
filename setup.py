@@ -10,7 +10,7 @@ setup(
     install_requires=[
         "pandas",
         "openpyxl",
-        "requests"
-        "seaborn"
+        "requests", # Páquete separado
+        "seaborn"  # Páquete separado
     ]
 ) 
