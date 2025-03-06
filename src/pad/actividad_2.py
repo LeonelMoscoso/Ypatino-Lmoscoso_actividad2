@@ -71,6 +71,24 @@ matriz_4x4 = np.fromfunction(lambda i, j: i*2 + j, (4,4), dtype=int)  # ✅ Matr
 inversa_4x4 = np.linalg.inv(matriz_4x4)
 print("\nMatriz 4x4 (i*2 + j):\n", matriz_4x4)
 print("\nInversa:\n", inversa_4x4)
+directorio = os.path.join("src", "pad", "static", "json")
+os.makedirs(directorio, exist_ok=True)  # Crear directorio si no existe
+
+# Ruta del archivo JSON
+ruta_archivo = os.path.join(directorio, "matriz_inversa.json")
+
+# Guardar en JSON (convertimos a listas)
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump(
+        {
+            "matriz_4x4": matriz_4x4.tolist(),
+            "inversa_4x4": inversa_4x4.tolist() if inversa_4x4 is not None else "No tiene inversa"
+        },
+        archivo,
+        indent=4
+    )
+
+print(f"Archivo guardado en: {ruta_archivo}")
 
 # 5. Máximo y mínimo con índices
 array_100 = np.random.rand(100)
@@ -78,6 +96,27 @@ maximo, minimo = array_100.max(), array_100.min()
 idx_max, idx_min = array_100.argmax(), array_100.argmin()
 print(f"\nMáximo: {maximo:.3f} (índice {idx_max})")
 print(f"Mínimo: {minimo:.3f} (índice {idx_min})")
+directorio = os.path.join("src", "pad", "static", "json")
+os.makedirs(directorio, exist_ok=True)  # Crear carpeta si no existe
+
+# Ruta del archivo JSON
+ruta_archivo = os.path.join(directorio, "array_100.json")
+
+# Guardar en JSON (convertimos a listas y valores flotantes)
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump(
+        {
+            "array_100": array_100.tolist(),  # Convertir array a lista
+            "maximo": float(maximo),
+            "indice_maximo": int(idx_max),
+            "minimo": float(minimo),
+            "indice_minimo": int(idx_min)
+        },
+        archivo,
+        indent=4
+    )
+
+print(f"Archivo guardado en: {ruta_archivo}")
 
 # 6. Broadcasting 3x1 + 1x3 (explicito)
 a = np.array([2, 3, 4])  # Columna 3x1 (valores 2, 3, 4)
