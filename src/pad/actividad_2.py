@@ -123,26 +123,118 @@ a = np.array([2, 3, 4])  # Columna 3x1 (valores 2, 3, 4)
 b = np.array([[4, 5, 6]])       # Fila 1x3
 resultado = a + b  # Broadcasting a 3x3
 print("\nResultado Broadcasting:\n", resultado)
+directorio = os.path.join("src", "pad", "static", "json")
+os.makedirs(directorio, exist_ok=True)  # Crear carpeta si no existe
+
+# Ruta del archivo JSON
+ruta_archivo = os.path.join(directorio, "broadcasting.json")
+
+# Guardar en JSON (convertimos a listas)
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump(
+        {
+            "a": a.tolist(),  # Convertir a lista
+            "b": b.tolist(),
+            "resultado": resultado.tolist()
+        },
+        archivo,
+        indent=4
+    )
+
+print(f"Archivo guardado en: {ruta_archivo}")
 
 # 7. Submatriz 2x2 desde fila 2, columna 2 (índices 1)
 matriz_5x5 = np.random.randint(1, 10, (5,5))
 submatriz = matriz_5x5[1:3, 1:3]
 print("\nSubmatriz 2x2:\n", submatriz)
+# Definir directorio para guardar el JSON
+directorio = os.path.join("src", "pad", "static", "json")
+os.makedirs(directorio, exist_ok=True)  # Crear carpeta si no existe
+
+# Ruta del archivo JSON
+ruta_archivo = os.path.join(directorio, "matriz_submatriz.json")
+
+# Guardar en JSON (convertimos a listas)
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump(
+        {
+            "matriz_5x5": matriz_5x5.tolist(),
+            "submatriz_2x2": submatriz.tolist()
+        },
+        archivo,
+        indent=4
+    )
+
+print(f"Archivo guardado en: {ruta_archivo}")
+
 
 # 8. Array de ceros modificado
 zeros_mod = np.zeros(10)
 zeros_mod[3:7] = 5
 print("\nArray de ceros modificado:\n", zeros_mod)
+# Definir directorio para guardar el JSON
+directorio = os.path.join("src", "pad", "static", "json")
+os.makedirs(directorio, exist_ok=True)  # Crear carpeta si no existe
+
+# Ruta del archivo JSON
+ruta_archivo = os.path.join(directorio, "array_zeros_mod.json")
+
+# Guardar en JSON (convertimos a lista)
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump({"zeros_mod": zeros_mod.tolist()}, archivo, indent=4)
+
+print(f"Archivo guardado en: {ruta_archivo}")
+
 
 # 9. Invertir filas de matriz 3x3
 matriz_3x3 = np.array([[1,2,3], [4,5,6], [7,8,9]])
 matriz_invertida = matriz_3x3[::-1]
 print("\nMatriz invertida:\n", matriz_invertida)
+# Definir directorio para guardar el JSON
+directorio = os.path.join("src", "pad", "static", "json")
+os.makedirs(directorio, exist_ok=True)  # Crear carpeta si no existe
+
+# Ruta del archivo JSON
+ruta_archivo = os.path.join(directorio, "matriz_invertida.json")
+
+# Guardar en JSON (convertimos a listas)
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump(
+        {
+            "matriz_3x3": matriz_3x3.tolist(),
+            "matriz_invertida": matriz_invertida.tolist()
+        },
+        archivo,
+        indent=4
+    )
+
+print(f"Archivo guardado en: {ruta_archivo}")
+
 
 # 10. Seleccionar elementos >0.5
 arr_rand = np.random.rand(10)
 selected = arr_rand[arr_rand > 0.5]
 print("\nElementos >0.5:\n", selected)
+# Definir directorio para guardar el JSON
+directorio = os.path.join("src", "pad", "static", "json")
+os.makedirs(directorio, exist_ok=True)  # Crear carpeta si no existe
+
+# Ruta del archivo JSON
+ruta_archivo = os.path.join(directorio, "valores_mayores_0.5.json")
+
+# Guardar en JSON (convertimos a listas)
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump(
+        {
+            "array_completo": arr_rand.tolist(),
+            "mayores_a_0.5": selected.tolist()
+        },
+        archivo,
+        indent=4
+    )
+
+print(f"Archivo guardado en: {ruta_archivo}")
+
 
 # ----------------------------
 # 2. Gráficos de Dispersión/Densidad
