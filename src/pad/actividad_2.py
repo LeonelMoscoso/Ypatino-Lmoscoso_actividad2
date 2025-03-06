@@ -4,6 +4,8 @@ from numpy.random import randn
 import seaborn as sns  # Necesario para estilos
 import os
 import sys
+import json
+
 
 
 # Configuración inicial
@@ -78,7 +80,7 @@ plt.title("Gráfico de Dispersión Aleatorio")
 plt.xlabel("X"), plt.ylabel("Y")
 print("x1:", x1)
 print("y1:", y1)
-
+plt.savefig("graficas_generadas1.jpg", dpi=300)  # Alta resolución
 
 # 12. Scatter plot con y = sin(x) + ruido
 plt.figure(figsize=(10, 6))
@@ -116,7 +118,8 @@ plt.scatter(x4, y4, c=np.hypot(x4, y4), cmap='plasma', alpha=0.6, edgecolor='w',
 plt.colorbar(label="Distancia al origen")
 plt.title("Dispersión con Densidad")
 print("x4:", x4)
-print("y4:", y4)        
+print("y4:", y4)     
+plt.savefig("graficas_generadas4.jpg", dpi=300)  # Alta resolución   
 
 
 # 15. Gráfico de contorno lleno
@@ -126,7 +129,7 @@ plt.colorbar(label="Valor de Z")
 plt.title(r"Contorno Lleno: $z = \cos(x) + \sin(y)$")
 print("X:", X)
 print("Y:", Y)  
-
+plt.savefig("graficas_generadas5.jpg", dpi=300)  # Alta resolución
 
 # ----------------------------
 # 3. Histogramas
@@ -139,6 +142,7 @@ plt.axvline(data_norm.mean(), color='red', linestyle='--', label=f"Media: {data_
 plt.title("Histograma Distribución Normal")
 plt.legend()
 print("data_norm:", data_norm)
+plt.savefig("graficas_generadas6.jpg", dpi=300)  # Alta resolución
 
 
 # 17. Dos distribuciones superpuestas (con densidad)
@@ -151,6 +155,7 @@ plt.title("Histogramas Superpuestos (Normalizados)")
 plt.legend()
 print("data1:", data1)
 print("data2:", data2)  
+plt.savefig("graficas_generadas7.jpg", dpi=300)  # Alta resolución
 
 
 # 18. Experimentar con bins
@@ -162,7 +167,7 @@ for i, bins in enumerate(bins_list, 1):
     plt.title(f"{bins} bins")
 plt.suptitle("Efecto de Número de Bins")
 print("data_norm:", data_norm)  
-
+plt.savefig("graficas_generadas8.jpg", dpi=300)  # Alta resolución
 
 # ----------------------------
 # Mostrar todos los gráficos
