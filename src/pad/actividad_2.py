@@ -23,7 +23,7 @@ directorio = os.path.join("src", "pad", "static", "json")  # 🛑 Usa os.path.jo
 os.makedirs(directorio, exist_ok=True)
 
 # Ruta completa del archivo
-ruta_archivo = os.path.join(directorio, "array_10_29.json")  # ✅ Ruta válida
+ruta_archivo = os.path.join(directorio, "array_10_29.json")  #  Ruta válida
 
 # Guardar el JSON
 with open(ruta_archivo, "w", encoding="utf-8") as archivo:
@@ -36,12 +36,35 @@ print(f"Archivo guardado en: {ruta_archivo}")
 array_10x10 = np.ones((10, 10))
 suma_10x10 = array_10x10.sum()
 print("\nSuma de 10x10 de unos:", suma_10x10)
+directorio = os.path.join("src", "pad", "static", "json")  # 🛑 Usa os.path.join
+os.makedirs(directorio, exist_ok=True)
+
+# Ruta completa del archivo
+ruta_archivo = os.path.join(directorio, "array_10x10.json")  #  Ruta válida
+
+# Guardar el JSON
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump({"array": (array_10x10).tolist()}, archivo, indent=4)
+
+print(f"Archivo guardado en: {ruta_archivo}")
+
 
 # 3. Producto elemento a elemento de dos arrays
 arr1 = np.random.randint(1, 11, 5)
 arr2 = np.random.randint(1, 11, 5)
 producto = arr1 * arr2
 print("\nProducto elemento a elemento:\n", arr1, "*", arr2, "=", producto)
+
+directorio = os.path.join("src", "pad", "static", "json")  # 🛑 Usa os.path.join
+os.makedirs(directorio, exist_ok=True)
+
+ruta_archivo = os.path.join(directorio, "producto_arrays.json")
+
+# Guardar en un archivo JSON
+with open(ruta_archivo, "w", encoding="utf-8") as archivo:
+    json.dump({"arr1": arr1.tolist(), "arr2": arr2.tolist(), "producto": producto.tolist()}, archivo, indent=4)
+
+print(f"Archivo guardado en: {ruta_archivo}")
 
 # 4. Matriz 4x4 invertible (i*2 + j)
 matriz_4x4 = np.fromfunction(lambda i, j: i*2 + j, (4,4), dtype=int)  # ✅ Matriz invertible
