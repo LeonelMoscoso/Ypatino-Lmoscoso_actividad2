@@ -359,3 +359,4 @@ print("x1:", x1)
 print("y1:", y1)
 
 plt.savefig("graficas_generadas.jpg", dpi=300)  # Alta resolución
+
