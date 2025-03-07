@@ -5,7 +5,10 @@ import seaborn as sns  # Necesario para estilos
 import os
 import sys
 import json
+import matplotlib
+matplotlib.use("Agg")  # Usa un backend que no requiere interfaz gráfica
 
+import matplotlib.pyplot as plt
 
 
 # Configuración inicial
