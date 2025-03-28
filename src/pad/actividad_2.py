@@ -5,7 +5,10 @@ import seaborn as sns  # Necesario para estilos
 import os
 import sys
 import json
+import matplotlib
+matplotlib.use("Agg")  # Usa un backend que no requiere interfaz gráfica
 
+import matplotlib.pyplot as plt
 
 
 # Configuración inicial
@@ -336,6 +339,46 @@ plt.suptitle("Efecto de Número de Bins")
 print("data_norm:", data_norm)  
 plt.savefig("graficas_generadas8.jpg", dpi=300)  # Alta resolución
 
+# 19. Añadir una línea vertical que indique la media de los datos
+data_mean = np.mean(data1)
+plt.figure(figsize=(8, 5))
+plt.hist(data1, bins=30, alpha=0.7, color='blue', edgecolor='black')
+plt.axvline(data_mean, color='red', linestyle='dashed', linewidth=2, label=f'Media: {data_mean:.2f}')
+plt.title("Histograma con línea de la media")
+plt.xlabel("Valor")
+plt.ylabel("Frecuencia")
+plt.legend()
+plt.show()
+
+plt.savefig(
+    'histograma_media.jpg',  # Nombre
+    dpi=300,                 # Calidad (puntos por pulgada)
+    bbox_inches='tight',     # Eliminar bordes vacíos
+    format='jpg'             # Formato: PNG, JPG, PDF, SVG
+)
+
+
+
+# 20 Histogramas superpuestos con colores y transparencias diferentes
+data3 = np.random.normal(loc=-2, scale=1, size=1000)
+
+plt.figure(figsize=(8, 5))
+plt.hist(data1, bins=30, alpha=0.5, color='blue', edgecolor='black', label='Data 1')
+plt.hist(data3, bins=30, alpha=0.5, color='green', edgecolor='black', label='Data 3')
+plt.title("Histogramas superpuestos de dos conjuntos de datos")
+plt.xlabel("Valor")
+plt.ylabel("Frecuencia")
+plt.legend()
+
+plt.savefig(
+    'histogramas_superpuestos.jpg',  # Nombre
+    dpi=300,                         # Calidad (puntos por pulgada)
+    bbox_inches='tight',             # Eliminar bordes vacíos
+    format='jpg'                     # Formato: PNG, JPG, PDF, SVG
+)
+
+
+
 # ----------------------------
 # Mostrar todos los gráficos
 
@@ -358,4 +401,8 @@ plt.xlabel("X"), plt.ylabel("Y")
 print("x1:", x1)
 print("y1:", y1)
 
+
+
 plt.savefig("graficas_generadas.jpg", dpi=300)  # Alta resolución
+
+# final
